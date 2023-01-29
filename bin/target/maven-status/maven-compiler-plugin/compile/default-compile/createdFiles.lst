@@ -1,0 +1,5 @@
+com\project\controller\ProductoController.class
+com\project\RicardoapiApplication.class
+com\project\objetos\Producto.class
+com\project\objetos\Usuario.class
+com\project\controller\UsuarioController.class
