@@ -1,0 +1,28 @@
+
+**Como crear un contenedor DOCKER con una aplicacion web hecha en java
+
+1-agregar dependencia en el pom.xml para compatibilizar maven con la nuestra version java(en este caso java 17) para luego crear un archivo jar
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.8.0</version>
+			<configuration>
+				<source>17</source>
+				<target>17</target>
+			</configuration>
+		</plugin>
+
+2-"mvn clean install" EN EL TERMINAL para crear archivo jar
+
+3-crear archivo dockerfile
+
+FROM openjdk:17-jdk-alpine
+COPY target/ricardoapi-0.0.1-SNAPSHOT.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","/app.jar"]
+
+**podemos ver el nombre del archivo jar en target/
+
+4-docker build -t ricardohuaripata/ricardoapi -f Dockerfile .
+
+5-docker run -p 8080:8080 ricardohuaripata/ricardoapi
